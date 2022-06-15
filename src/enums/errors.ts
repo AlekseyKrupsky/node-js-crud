@@ -1,0 +1,5 @@
+export enum Errors {
+    NOT_FOUND = 'NOT_FOUND',
+    INVALID_UUID = 'INVALID_UUID',
+    VALIDATION_FAILED = 'VALIDATION_FAILED',
+}
