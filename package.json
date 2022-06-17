@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "start:dev": "nodemon",
-    "start:prod": "tsc && node src/index.js --single",
-    "start:prod:multi": "tsc && node src/index.js --multi",
+    "start:prod": "tsc && node dist/index.js --single",
+    "start:prod:multi": "tsc && node dist/index.js --multi",
     "start": "ts-node --esm src/index.ts --single",
     "start:multi": "ts-node src/index.ts --multi"
   },
@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/AlekseyKrupsky/node-js-crud#readme",
   "devDependencies": {
+    "@types/jest": "^28.1.1",
     "@types/node": "^17.0.42",
+    "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
     "dotenv": "^16.0.1",
     "eslint": "^8.17.0",
@@ -34,9 +36,11 @@
     "typescript": "^4.7.3"
   },
   "jest": {
+    "preset": "ts-jest",
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/dist"
     ]
   },
   "dependencies": {
