@@ -7,8 +7,9 @@ import { Response } from "./response";
 import { ErrorResponse } from "./ErrorResponse";
 import { executeRouteHandler } from "./router";
 import { cwd } from "node:process";
+import { Server } from "net";
 
-export const run = () => {
+const createServer = (): Server => {
     dotenv.config({ path: `${cwd()}/.env`});
 
     const DEFAULT_PORT_NUMBER = 3000;
@@ -22,6 +23,12 @@ export const run = () => {
         server = http.createServer().listen(DEFAULT_PORT_NUMBER);
         console.log(`Server run on default ${DEFAULT_PORT_NUMBER} port [PID: ${process.pid}]`);
     }
+
+    return server;
+};
+
+export const run = (): void => {
+    const server = createServer();
 
     server.on('request', (request: IncomingMessage, response: ServerResponse) => {
         const domainInstance = domain.create();

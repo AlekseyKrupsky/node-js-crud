@@ -28,7 +28,7 @@ export class User {
         return User.users;
     }
 
-    public static getUserByUUID(uuid: string) {
+    public static getUserByUUID(uuid: string): User {
         const index: number = User.findItemIndexByUUID(uuid);
 
         return User.users[index];
@@ -48,13 +48,13 @@ export class User {
         return updatingUser;
     }
 
-    public static removeByUUID(uuid: string) {
+    public static removeByUUID(uuid: string): void {
         const index: number = User.findItemIndexByUUID(uuid);
 
         User.users.splice(index, 1);
     }
 
-    private static findItemIndexByUUID(uuid: string) {
+    private static findItemIndexByUUID(uuid: string): number {
         if (!validateUUID(uuid)) {
             throw new Error(Errors.INVALID_UUID);
         }

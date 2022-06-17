@@ -6,3 +6,8 @@ export enum HTTPStatuses {
     NOT_FOUND = 404,
     SERVER_ERROR = 500,
 }
+
+export enum MessageStatuses {
+    SUCCESS = 'SUCCESS',
+    ERROR = 'ERROR',
+}

@@ -1,6 +1,6 @@
 import { Errors } from "../enums/errors";
 
-const isArrayOfStrings = (array: any) => {
+const isArrayOfStrings = (array: any): boolean => {
     return array.every((elem: any) => (typeof elem === "string"));
 };
 

@@ -2,7 +2,7 @@ import { IncomingMessage } from "http";
 import UserController from "./controllers/userController";
 import { Errors } from "./enums/errors";
 
-export const executeRouteHandler = (request: IncomingMessage) => {
+export const executeRouteHandler = (request: IncomingMessage): void => {
     const url = request.url;
 
     if (url === undefined) {
@@ -13,13 +13,13 @@ export const executeRouteHandler = (request: IncomingMessage) => {
         if (request.method === 'GET') {
             UserController.getUsers();
 
-            return true;
+            return;
         }
 
         if (request.method === 'POST') {
             UserController.createUser(request);
 
-            return true;
+            return;
         }
     }
 
@@ -29,19 +29,19 @@ export const executeRouteHandler = (request: IncomingMessage) => {
         if (request.method === 'GET') {
             UserController.getUser(uuid);
 
-            return true;
+            return;
         }
 
         if (request.method === 'PUT') {
             UserController.updateUser(request, uuid);
 
-            return true;
+            return;
         }
 
         if (request.method === 'DELETE') {
             UserController.removeUser(uuid);
 
-            return true;
+            return;
         }
     }
 
