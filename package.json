@@ -2,7 +2,7 @@
   "name": "js-crud",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start:dev": "nodemon",
     "start:prod": "tsc src/index.ts && node index.js",
