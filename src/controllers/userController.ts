@@ -11,29 +11,21 @@ class UserController {
         Response.send(HTTPStatuses.SUCCESS, User.getUsers());
     };
 
-    createUser = async (request: IncomingMessage) => {
+    createUser = (request: IncomingMessage) => {
         let requestBody: string = '';
 
         request.on('data', (chunk: any) => {
             requestBody += chunk.toString();
         });
 
-        return new Promise((resolve, reject) => {
-            request.on('end', () => {
-                try {
-                    const parsedBody = JSON.parse(requestBody);
+        request.on('end', () => {
+            const parsedBody = JSON.parse(requestBody);
 
-                    validateUser(parsedBody);
+            validateUser(parsedBody);
 
-                    const createdUser = User.create(parsedBody.name, parsedBody.age, parsedBody.hobbies);
+            const createdUser = User.create(parsedBody.name, parsedBody.age, parsedBody.hobbies);
 
-                    Response.send(HTTPStatuses.CREATED, createdUser);
-
-                    resolve(true);
-                } catch (error) {
-                    reject(error);
-                }
-            });
+            Response.send(HTTPStatuses.CREATED, createdUser);
         });
     };
 
@@ -50,22 +42,14 @@ class UserController {
             requestBody += chunk.toString();
         });
 
-        return new Promise((resolve, reject) => {
-            request.on('end', () => {
-                try {
-                    const parsedBody = JSON.parse(requestBody);
+        request.on('end', () => {
+            const parsedBody = JSON.parse(requestBody);
 
-                    validateUser(parsedBody);
+            validateUser(parsedBody);
 
-                    const updatedUser = User.updateUser(uuid, parsedBody.name, parsedBody.age, parsedBody.hobbies);
+            const updatedUser = User.updateUser(uuid, parsedBody.name, parsedBody.age, parsedBody.hobbies);
 
-                    Response.send(HTTPStatuses.SUCCESS, updatedUser);
-
-                    resolve(true);
-                } catch (error) {
-                    reject(error);
-                }
-            });
+            Response.send(HTTPStatuses.SUCCESS, updatedUser);
         });
     };
 
