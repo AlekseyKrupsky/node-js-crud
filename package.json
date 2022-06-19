@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "start:dev": "nodemon",
-    "start:prod": "tsc && node dist/index.js --single",
-    "start:prod:multi": "tsc && node dist/index.js --multi",
-    "start": "ts-node --esm src/index.ts --single",
+    "start:prod": "tsc && node dist/src/index.js --single",
+    "start:prod:multi": "tsc && node dist/src/index.js --multi",
+    "start": "ts-node src/index.ts --single",
     "start:multi": "ts-node src/index.ts --multi"
   },
   "repository": {
